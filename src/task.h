@@ -13,5 +13,6 @@ struct Task
 
 void print_task(struct Task task);
 void add_task(struct Task tasks[], int *total_tasks);
+void list_task(struct Task tasks[], int total_tasks);
 
 #endif
