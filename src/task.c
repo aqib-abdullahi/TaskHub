@@ -53,3 +53,22 @@ void list_task(struct Task tasks[], int total_tasks)
         printf("No added tasks\n");
     }
 }
+
+void remove_task(struct Task tasks[], int *total_tasks, int task_id)
+{
+    int found = 0;
+    for (int i = 0; i < *total_tasks; i++) {
+        if (tasks[i].id == task_id) {
+            found = 1;
+            for (int j = i; j < *total_tasks - 1; j++) {
+            tasks[j] = tasks[j + 1];
+        }
+        (*total_tasks)--;
+        printf("Task with [ID: %d (%s)] successfully deleted\n", task_id, tasks[i].title);
+        break;
+        }
+    }
+    if (!found) {
+        printf("Task with ID %d not found\n", task_id);
+    }
+}

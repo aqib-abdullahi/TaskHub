@@ -34,6 +34,12 @@ int main() {
                 list_task(tasks, total_tasks);
                 break;
             case 3:
+                printf("Enter Task ID: ");
+                fflush(stdin);
+                fgets(input, sizeof(input), stdin);
+                int task_id;
+                task_id = atoi(input);
+                remove_task(tasks, &total_tasks, task_id);
                 break;
             case 4:
                 printf("Closing program... Goodbye!");
