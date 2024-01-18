@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "task.h"
 #include <stdlib.h>
+#include <string.h>
 // main file
 
 int main() {
@@ -15,6 +16,7 @@ int main() {
         printf("1. Add Task\n");
         printf("2. List Task\n");
         printf("3. Remove Task\n");
+        // printf("4. Save Task\n");
         printf("4. Exit\n\n");
         printf("------------------\n");
         printf("Enter your choice: ");
@@ -29,6 +31,7 @@ int main() {
         switch (choice) {
             case 1:
                 add_task(tasks, &total_tasks);
+                save_to_file(tasks, total_tasks, "tasks.txt");
                 break;
             case 2:
                 list_task(tasks, total_tasks);

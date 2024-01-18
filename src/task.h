@@ -15,5 +15,6 @@ void print_task(struct Task task);
 void add_task(struct Task tasks[], int *total_tasks);
 void list_task(struct Task tasks[], int total_tasks);
 void remove_task(struct Task tasks[], int *total_tasks, int task_id);
+void save_to_file(struct Task tasks[], int total_tasks, const char *filename);
 
 #endif

@@ -64,11 +64,27 @@ void remove_task(struct Task tasks[], int *total_tasks, int task_id)
             tasks[j] = tasks[j + 1];
         }
         (*total_tasks)--;
-        printf("Task with [ID: %d (%s)] successfully deleted\n", task_id, tasks[i].title);
+        printf("\nTask with [ID: %d (%s)] successfully deleted\n", task_id, tasks[i].title);
         break;
         }
     }
     if (!found) {
         printf("Task with ID %d not found\n", task_id);
     }
+}
+
+void save_to_file(struct Task tasks[], int total_tasks, const char *filename)
+{
+    FILE *file = fopen(filename, "w");
+
+    if (file == NULL) {
+        printf("Can't open file for writing");
+        return;
+    }
+
+    for (int i = 0; i < total_tasks; i++) {
+        fprintf(file, "[%d], [%s], [%s], [%s]\n", tasks[i].id, tasks[i].title, tasks[i].description, tasks[i].due_date);
+    }
+    fclose(file);
+    printf("Task saved to %s succeessfully!\n", filename);
 }
