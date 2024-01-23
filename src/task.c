@@ -83,8 +83,28 @@ void save_to_file(struct Task tasks[], int total_tasks, const char *filename)
     }
 
     for (int i = 0; i < total_tasks; i++) {
-        fprintf(file, "[%d], [%s], [%s], [%s]\n", tasks[i].id, tasks[i].title, tasks[i].description, tasks[i].due_date);
+        fprintf(file, "%d, %s, %s, %s\n", tasks[i].id, tasks[i].title, tasks[i].description, tasks[i].due_date);
     }
     fclose(file);
     printf("Task saved to %s succeessfully!\n", filename);
+}
+
+void load_tasks_from_file(struct Task tasks[], int *total_tasks, const char *filename)
+{
+    FILE *file = fopen(filename, "r");
+
+    if (file == NULL) {
+        return;
+    }
+
+    while (fscanf(file, "%d, %49[^,], %199[^,], %49[^\n]%*c", &tasks[*total_tasks].id, &tasks[*total_tasks].title, &tasks[*total_tasks].description, &tasks[*total_tasks].due_date) == 4)
+    {
+        (*total_tasks)++;
+        if (*total_tasks >= MAX_TASK )
+        {
+            printf("Maximum number of tasks reached. Some tasks may not load.\n");
+            break;
+        }
+    }
+    fclose(file);
 }

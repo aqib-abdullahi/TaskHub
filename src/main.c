@@ -11,15 +11,15 @@ int main() {
     char input[50];
 
     do{
-        printf("------------------\n");
-        printf("Task Manager\n\n");
-        printf("1. Add Task\n");
-        printf("2. List Task\n");
-        printf("3. Remove Task\n");
-        // printf("4. Save Task\n");
-        printf("4. Exit\n\n");
-        printf("------------------\n");
-        printf("Enter your choice: ");
+        printf("\n\t\t------------------\n");
+        printf("\t\tTask Manager\n\n");
+        printf("\t\t1. Add Task\n");
+        printf("\t\t2. List Task\n");
+        printf("\t\t3. Remove Task\n");
+        printf("\t\t4. Exit\n\n");
+        printf("\t\t------------------\n");
+        load_tasks_from_file(tasks, &total_tasks, "tasks.txt");
+        printf("\nEnter your choice: ");
         fgets(input, sizeof(input), stdin);
 
         choice = atoi(input);
